@@ -6,11 +6,11 @@ function App() {
   return (
     <>
     <Navbar />
-    {/* <div className="container">
+    <div className="container">
     <Inputbox />
+    {/* <About/> */}
 
-    </div> */}
-    <About/>
+    </div>
     </>
   );
 }
