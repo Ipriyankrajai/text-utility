@@ -74,8 +74,8 @@ export default function Inputbox() {
             <button type="button" className="btn btn-primary mx-1 my-2" onClick={copyData}>Copy</button>
             <button type="button" className="btn btn-primary mx-1 my-2" onClick={clearData}>Clear</button>
             <h1>Text Summary</h1>
-            <p>total number of words {text.split(' ').length} and total number of letters are {text.length}</p>
-            <p>{text.split(' ').length/150} Minutes read</p>
+            <p>total number of words {text.length===0?0:text.split(' ').length} and total number of letters are {text.length}</p>
+            <p>{text.length===0?0:text.split(' ').length/150} Minutes read</p>
             <h1>Preview</h1>
             <p>{text}</p>
 
