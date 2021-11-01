@@ -57,9 +57,12 @@ export default function Inputbox() {
         let newText=text.split(/[ ]+/);
         setText(newText.join(" "));
     }
+
+
     return (
         <>
-            <div className="my-3">
+
+            <div className="my-3"  >
                 <textarea className="form-control" id="myBox" value={text} rows="8" onChange={editTextbox} ></textarea>
                 {/* <textarea className="form-control" id="myBox"  rows="3"  ></textarea> */}
 
@@ -72,9 +75,10 @@ export default function Inputbox() {
             <button type="button" className="btn btn-primary mx-1 my-2" onClick={clearData}>Clear</button>
             <h1>Text Summary</h1>
             <p>total number of words {text.split(' ').length} and total number of letters are {text.length}</p>
-            <p>{text.split(' ').length/200} Minutes read</p>
+            <p>{text.split(' ').length/150} Minutes read</p>
             <h1>Preview</h1>
             <p>{text}</p>
+
         </>
     )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">TextUtilis</a>
+            <nav class={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+                <a class="navbar-brand" href="/">TextUtility</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -23,8 +23,10 @@ export default function Navbar() {
 
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
+                    <label class="form-check-label" style={{'color':props.mode==='light'?'black':'white'}} for="flexSwitchCheckDefault">Enable dark mode</label>
+                    </div>
                     </form>
                 </div>
             </nav>
