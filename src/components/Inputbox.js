@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Inputbox() {
+export default function Inputbox(props) {
     // const txtbox=document.getElementById("myBox");
     // const convertToUpper=()=>{
     //     // console.log(text.toUpperCase())
@@ -10,11 +10,13 @@ export default function Inputbox() {
         // console.log(text.toUpperCase())
         var newText=text.toUpperCase();
         setText(newText);
+        props.showAlert("success","Yay! converted to upper case");
     }
     const convertToLower=()=>{
         // console.log(text.toUpperCase())
         var newText=text.toLowerCase();
         setText(newText);
+        props.showAlert("success","Yay! converted to lower case");
     }
     const editTextbox=(e)=>{
         setText(e.target.value);
@@ -22,6 +24,7 @@ export default function Inputbox() {
     const [text, setText] = useState("");
     const clearData=()=>{
         setText("");
+        props.showAlert("success","Yay! Cleared text");
     }
     const capitalfirst=()=>{
         let sentences=text.split(".");
@@ -46,16 +49,18 @@ export default function Inputbox() {
         })
         // console.log(finalop);
         setText(finalop);
+        props.showAlert("success","Yay! Set all fist letter capital");
     }
     const copyData=()=>{
         const cpyTxt=document.getElementById("myBox");
         cpyTxt.select();
         navigator.clipboard.writeText(cpyTxt.value);
-
+        props.showAlert("success","Yay! copied to clipboad");
     }
     const removeSpace=()=>{
         let newText=text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("success","Yay! removed all extra spaces");
     }
 
 
