@@ -3,37 +3,22 @@ import React, {useState} from 'react'
 
 
 
-export default function About() {
-  const [TxtMode, setTxtMode] = useState("Enable dark mode");
-  const [style, setStyle] = useState({
-    color:"black",
-    backgroundColor:"white"
-  });
-  const toggleColor=()=>{
-    console.log(style.color)
-    if(style.color==="black"){
-    setStyle({
-    color:"white",
-    backgroundColor:"black",
-    border:"1px solid white"
-
-    })
-    setTxtMode("Enable light mode");
-  }else{
-    setStyle({
-      color:"black",
-    backgroundColor:"white"
-
-    })
-    setTxtMode("Enable dark mode");
+export default function About(props) {
+  let style={
+    color:props.mode==="dark"?"white":"black",
+    backgroundColor:props.mode==="dark"?"#212529":"white",
+    border:"2px solid",
+    borderColor:props.mode==="dark"?"white":"black"
   }
 
-  }
 
     return (
         <>
-        <h1 className="mx-3">About Us</h1>
         <div className="container" >
+        <h1 >About Us</h1>
+        <h3>Our Story</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique placeat, eaque mollitia aliquam consequuntur aliquid eos odit impedit quibusdam nihil at ut. Molestias nulla id alias, fuga qui, doloribus atque molestiae maxime doloremque iste fugit aliquam totam reiciendis asperiores error in vitae nihil libero dolorem vero. Voluptatibus quibusdam deserunt porro laborum nostrum labore iste repellendus cumque eum. Voluptate optio doloribus deserunt laborum corporis porro debitis expedita accusantium, laudantium ex commodi? Adipisci laborum inventore reprehenderit modi. Facilis, sit deleniti eligendi dignissimos ipsam distinctio tempora, quod quisquam, eius facere laborum quas optio voluptatem commodi nemo laudantium iure cumque fugit iste consectetur quam?</p>
+        <h3>FAQs</h3>
         <div className="accordion" id="accordionExample">
   <div className="accordion-item">
     <h2 className="accordion-header" id="headingOne">
@@ -72,7 +57,7 @@ export default function About() {
     </div>
   </div>
 </div>
-      <button type="button" className="btn btn-primary mx-1 my-2" onClick={toggleColor}>{TxtMode}</button>
+      {/* <button type="button" className="btn btn-primary mx-1 my-2" onClick={toggleColor}>{TxtMode}</button> */}
         </div>
         </>
     )

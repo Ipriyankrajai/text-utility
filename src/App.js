@@ -3,7 +3,12 @@ import Inputbox from "./components/Inputbox";
 import Navbar from "./components/Navbar";
 import { useState } from 'react'
 import Alert from "./components/Alert";
-
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 function App() {
   const [mode, setmode] = useState("light");
   const toggleMode = () => {
@@ -14,9 +19,10 @@ function App() {
 
       document.body.style.backgroundColor = "#212529";
       document.body.style.color = "white";
-      boxip.style.backgroundColor = "grey";
+      if(boxip){
+      boxip.style.backgroundColor = "#0d346c";
       boxip.style.color = "white";
-
+    }
 
 
     }
@@ -24,8 +30,10 @@ function App() {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
+      if(boxip){
       boxip.style.backgroundColor = "white";
       boxip.style.color = "black";
+      }
       showAlert("success","light mode enable");
 
     }
@@ -45,13 +53,22 @@ function App() {
   }
   return (
     <>
+    <Router>
       <Navbar mode={mode} toggleMode={toggleMode}  showAlert={showAlert}/>
       <Alert alert={alert} />
       <div className="container">
-        <Inputbox showAlert={showAlert} />
-        {/* <About/> */}
 
+        {/* <About/> */}
+        <Switch>
+          <Route path="/about">
+            <About mode={mode} />
+          </Route>
+          <Route path="/">
+          <Inputbox showAlert={showAlert} />
+          </Route>
+        </Switch>
       </div>
+      </Router>
     </>
   );
 }
